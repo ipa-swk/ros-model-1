@@ -1,90 +1,82 @@
-# Ros Model
+# ros-model
+<a id="top"/> 
 
-1. <a href="#RosNode">Describe a ROS node using Sirius</a>
-2. <a href="#RosArtifactProject">Create a ROS artifact project</a>
-3. <a href="#RosSRGatewayProject">Create a SeRoNet Gateway project for ROS</a>
+This repository holds the models and eclipse plugins to start MDE tools to describe ROS nodes and its interfaces.
 
-#### Describe a ROS node using Sirius <a id="RosNode"/>
+Technical Maintainer: [**ipa-nhg**](https://github.com/ipa-nhg/) (**Nadia Hammoudeh Garcia**, **Fraunhofer IPA**) - **nadia.hammoudeh.garcia@ipa.fraunhofer.de**
 
-1.Import into a new Eclipse workspace the projects:
+## Contents
+
+1. <a href="#1--installation-requirements">Installation Requirements</a>
+2. <a href="#2--start">Start the software</a>
+
+
+## 1. Installation and setup Requirements: <a id="1--installation-requirements"/> 
+
+#### Eclipse installation
+Download the official (Eclipse Installer)[https://www.eclipse.org/downloads/packages/installer] and choose the *Eclipse Modeling tools* package.
+
+Once Eclipse is installed go to the menu *Help* and open the *Eclipse Marketplace* to install the pakcages:
+```
+Sirius
+Eclipse Xtext
+Eclipse Xtend
+```
+
+#### Setup the work environment
+1. Clone the repository:
 
 ```
+git clone https://github.com/seronet-project/ros-model
+```
+1. Import into a new Eclipse workspace the projects:
+
+File -> Import -> General -> Existing projects into Workspace
+
+Choose the folder where the repository was cloned and select the following projects:
+
+```
+de.fraunhofer.ipa.componentInterface
+de.fraunhofer.ipa.componentInterface.edit
+de.fraunhofer.ipa.componentInterface.editor
+de.fraunhofer.ipa.componentInterface.xtext
+de.fraunhofer.ipa.componentInterface.xtext.ide
+de.fraunhofer.ipa.componentInterface.xtext.ui
 de.fraunhofer.ipa.ros
 de.fraunhofer.ipa.ros.edit
 de.fraunhofer.ipa.ros.editor
-de.fraunhofer.ipa.ros.tests
 de.fraunhofer.ipa.ros.sirius
-```
-2.Start a new eclipse application by either (de.fraunhofer.ipa.ros.sirius -> plugin.xml and click *Launch an Eclipse application*) or (*right click* de.fraunhofer.ipa.ros.sirius and *click* on Run As > Eclipse Application)
-
-3.Create a new modeling project (Menu > File > New > Project > Sirius > Modeling Project)
-
-4.Create a new ROS model to hold the description of your node (inside the new modeling project, click New  > Other > Ros Model and choose  Model Object as *Artifact*)
-
-5.Create a new representation for your artifact (open the file representarions.aird with the aird editor, enable the representation *component*, select *Artifact* diagram and click *New...*)
-
-Use the palette toolbar to add a new node, to configure your model use also the *Properties* view.
-
-#### Create a ROS artifact project <a id="RosArtifactProject"/>
-
-1.Import into a new Eclipse workspace the projects:
-
-```
-de.fraunhofer.ipa.ros
-de.fraunhofer.ipa.ros.edit
-de.fraunhofer.ipa.ros.editor
 de.fraunhofer.ipa.ros.tests
-de.fraunhofer.ipa.ros.sirius
 de.fraunhofer.ipa.ros.xtext
 de.fraunhofer.ipa.ros.xtext.ide
 de.fraunhofer.ipa.ros.xtext.ui
-de.fraunhofer.ipa.rosartifact.xtext
-de.fraunhofer.ipa.rosartifact.xtext.ide
-de.fraunhofer.ipa.rosartifact.xtext.ui
-```
-2.Start a new eclipse application (de.fraunhofer.ipa.ros.editor -> plugin.xml and click *Launch an Eclipse application*)
 
-3.Import the common communication objects project to the workspace of your application:
+```
+
+## 2. Start the software: <a id="2--start"/> 
+
+ Start a new eclipse application by either (de.fraunhofer.ipa.ros.sirius -> plugin.xml and click *Launch an Eclipse application*) or (*right click* de.fraunhofer.ipa.ros.sirius and *click* on Run As > Eclipse Application)
+
+#### Create a ROS artifact project 
+
+1. Import the common communication objects project to the workbench of your application:
 ```
 de.fraunhofer.ipa.ros.communication.objects
 ```
-4.Create a new ROS artifact project (menu File > New > Other > ROS Artifact project)
+3. Create a new ROS model project (menu File > New > Other > ROS Model project)
+
+4. Once the project is created, open the *representations.aird* file and add a new representation for your Ros artifact
 
 Use the palette toolbar to add a new node, to configure your model use also the *Properties* view (if it is disabled go to *Window* > *Show view* > *Other* and choose *Properties*). 
 
-#### Create a SeRoNet Gateway project for ROS <a id="RosSRGatewayProject"/>
+#### Create a Component Interface for your ROS Model
 
-1.Import into a new Eclipse workspace the projects:
+1. Create a new ComponentInterface model (menu File > New > Other > ComponentInterface Model)
 
-```
-de.fraunhofer.ipa.ros
-de.fraunhofer.ipa.rosartifact.xtext
-de.fraunhofer.ipa.rosartifact.xtext.ide
-de.fraunhofer.ipa.rosartifact.xtext.ui
-de.fraunhofer.ipa.ros.edit
-de.fraunhofer.ipa.ros.editor
-de.fraunhofer.ipa.ros.seronetgw
-de.fraunhofer.ipa.ros.seronetgw.edit
-de.fraunhofer.ipa.ros.seronetgw.editor
-de.fraunhofer.ipa.ros.seronetgw.xtext
-de.fraunhofer.ipa.ros.seronetgw.xtext.ide
-de.fraunhofer.ipa.ros.seronetgw.xtext.ui
-de.fraunhofer.ipa.ros.sirius
-de.fraunhofer.ipa.ros.tests
-de.fraunhofer.ipa.ros.xtext
-de.fraunhofer.ipa.ros.xtext.ide
-de.fraunhofer.ipa.ros.xtext.ui
-```
-2.Start a new eclipse application (de.fraunhofer.ipa.ros.editor -> plugin.xml and click *Launch an Eclipse application*)
+2. Open the model with the ComponentInterface Model Editor
 
-3.Import the common communication objects project to the workspace of your application:
-```
-de.fraunhofer.ipa.ros.communication.objects
-```
-4.Create a new ROS-SeRoNet gateway project (menu File > New > Other > ROS-SeRoNet gateway Project)
+3. Add your ros model as resource for the ComponentInterface ( *right click* and *click* on "Load resource.." and select the path of your model)
 
-5.Give a name to your project and press *Next*. A new dialog will be open asking for a ROS input model, press *"Browse Workspace..."* and select the ROS model for which you want to generate a gateway (extension ".rosartifact"). You can create a new one by <a href="#RosArtifactProject">Create a ROS artifact project</a> step 3
+4. Use the *Properties* view to configure the component
 
-6.Expand the tree of the resouce *platform:/resource/YourProjectName/YourProjectName.rosgw* and select *Ros Gateway* using the view *Properties* (if it is disabled go to *Window* > *Show view* > *Other* and *Properties*) you can chosse the interfaces of the input ROS model you want to make available to your SeRoNet system.
-
-7.You can add more ROS input models by the option *Load Resource..* in the "Right-click" menu of your resouce *platform:/resource/YourProjectName/YourProjectName.rosgw*
+<a href="#top">top</a>
